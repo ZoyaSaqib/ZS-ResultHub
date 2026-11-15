@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="ResultHub Pakistan - An academic platform for students, parents and teachers.">
+
+    <title>ResultHub Pakistan | Check Results Simply</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Custom CSS for Result Search, Display & Modals -->
+    <style>
+        .result-card-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.3s ease-in-out;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .result-header {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1e293b;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+        .result-row strong {
+            color: #1e293b;
+        }
+        .result-divider {
+            border: 0;
+            border-top: 1px solid #e2e8f0;
+            margin: 12px 0;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        .status-pass {
+            background: #28a745;
+            color: white;
+        }
+        .status-fail {
+            background: #dc3545;
+            color: white;
+        }
+        /* Modal Popup Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+        .modal-content-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .modal-content-box h3 {
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        .modal-content-box p {
+            color: #64748b;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .modal-close-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .modal-close-btn:hover {
+            background: #0056b3;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <a href="#home" class="logo">
+        Result<span>Hub</span>
+    </a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#result-search">Check Results</a>
+        <a href="#teachers">For Teachers</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <a href="#teacher-auth" class="nav-button">
+        Teacher Login
+    </a>
+</header>
+
+<main>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+            <span class="eyebrow">YOUR ACADEMIC COMPANION</span>
+
+            <h1>
+                Check Exam Results.
+                <span>Simply.</span>
+            </h1>
+
+            <p>
+                A convenient academic platform for students,
+                parents and teachers across Pakistan[cite: 1].
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#result-search" class="primary-button">
+                    Check Results
+                </a>
+
+                <a href="#teacher-auth" class="secondary-button">
+                    Teacher Portal
+                </a>
+            </div>
+
+            <div class="hero-note">
+                Simple. Accessible. Designed for everyone.
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="preview-icon">🎓</div>
+
+            <span class="eyebrow">WELCOME TO RESULT HUB</span>
+
+            <h2>Your Academic Journey, Simplified.</h2>
+
+            <p>
+                Find the right academic tools in one convenient place[cite: 1].
+            </p>
+
+            <div class="preview-row">
+                <span>Students & Parents</span>
+                <strong>01</strong>
+            </div>
+
+            <div class="preview-row">
+                <span>Teachers</span>
+                <strong>02</strong>
+            </div>
+
+            <div class="preview-row">
+                <span>Academic Records</span>
+                <strong>03</strong>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SERVICES -->
+    <section class="features" id="results">
+
+        <div class="section-heading">
+            <span class="eyebrow">RESULT SERVICES</span>
+            <h2>What Are You Looking For?</h2>
+            <p>Choose the service that matches your needs[cite: 1].</p>
+        </div>
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Student Results</h3>
+                <p>
+                    Find examination results using your board,
+                    examination details and roll number[cite: 1].
+                </p>
+                <a href="#result-search" class="card-link">
+                    Explore Result Search →
+                </a>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon">👨‍👩‍👧</div>
+                <h3>Parents</h3>
+                <p>
+                    Access available academic result information
+                    for your children[cite: 1].
+                </p>
+                <a href="#result-search" class="card-link">
+                    Find Results →
+                </a>
+            </article>
+
+            <article class="feature-card" id="teachers">
+                <div class="feature-icon">👩‍🏫</div>
+                <h3>Teacher Portal</h3>
+                <p>
+                    Create an account, organize classes and
+                    manage academic records[cite: 1].
+                </p>
+                <a href="#teacher-auth" class="card-link">
+                    Enter Teacher Portal →
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+<!-- RESULT SEARCH -->
+    <section class="about" id="result-search">
+
+        <span class="eyebrow">RESULT SEARCH</span>
+
+        <h2>Find Your Examination Result</h2>
+
+        <p>
+            Enter your roll number below to check your exam results instantly[cite: 1].
+        </p>
+
+        <div class="search-placeholder">
+            <div class="feature-icon">🔎</div>
+            <h3>Check Student Result</h3>
+            
+            <form id="resultSearchForm" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <input 
+                    type="text" 
+                    id="searchRollNumber" 
+                    placeholder="Enter Roll Number (e.g., 101)" 
+                    required 
+                    style="padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px; width: 280px; font: inherit; outline: none;"
+                >
+                <button type="submit" class="primary-button" style="padding: 12px 22px; border: none; cursor: pointer;">
+                    Search Result
+                </button>
+            </form>
+
+            <div id="searchResultDisplay" style="margin-top: 25px;"></div>
+        </div>
+
+        <!-- RECORD MANAGEMENT / ADD RECORD BOX -->
+        <div style="margin-top: 40px; background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
+            <h3 style="margin-bottom: 10px; color: #1e293b; font-size: 1.1rem;">📝 Add / Update Student Record (Weekly/Monthly/Yearly)</h3>
+            <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">Yahan teacher poore saal, mahine ya hafte ka record enter kar sakta hai jo foran search mein show ho jayega.</p>
+            
+            <form id="addStudentRecordForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <input type="text" id="newRollNo" placeholder="Roll Number (e.g., 105)" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                <input type="text" id="newName" placeholder="Student Full Name" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                <input type="text" id="newClass" placeholder="Class (e.g., 10th Grade)" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                <input type="text" id="newTerm" placeholder="Term (e.g., Weekly / Monthly)" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                <input type="number" id="newObtained" placeholder="Marks Obtained" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                <input type="number" id="newTotal" placeholder="Total Marks" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                <input type="text" id="newGrade" placeholder="Grade (e.g., A+, B)" required style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; grid-column: span 2;">
+                
+                <button type="submit" class="primary-button" style="grid-column: span 2; padding: 10px; border: none; cursor: pointer; border-radius: 6px;">Save Student Record</button>
+            </form>
+            <div id="addRecordMsg" style="margin-top: 10px; font-size: 0.9rem; font-weight: 600;"></div>
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <span class="eyebrow">ABOUT US</span>
+
+        <h2>Education Made Easier</h2>
+
+        <p>
+            ResultHub Pakistan aims to bring students,
+            parents and teachers together through a simple
+            academic management platform[cite: 1].
+        </p>
+
+    </section>
+
+    <!-- TEACHER LOGIN & REGISTRATION -->
+    <section class="teacher-auth" id="teacher-auth">
+
+        <div class="auth-container">
+
+            <div class="auth-info">
+                <span class="eyebrow">RESULT HUB TEACHERS</span>
+
+                <h2>Welcome to Your Teacher Portal.</h2>
+
+                <p>
+                    A dedicated space for teachers to organize
+                    their classes and manage academic records[cite: 1].
+                </p>
+
+                <div class="auth-benefits">
+                    <div class="auth-benefit">
+                        <span>✓</span> Secure teacher accounts
+                    </div>
+
+                    <div class="auth-benefit">
+                        <span>✓</span> Manage your classes
+                    </div>
+
+                    <div class="auth-benefit">
+                        <span>✓</span> Organize academic records
+                    </div>
+
+                    <div class="auth-benefit">
+                        <span>✓</span> Simple teacher dashboard
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOGIN CARD -->
+            <div class="auth-card">
+
+                <h2 id="auth-heading">Teacher Login</h2>
+
+                <p class="auth-subtitle" id="auth-subtitle">
+                    Welcome back! Please enter your details.
+                </p>
+
+                <div class="auth-tabs">
+
+                    <button
+                        type="button"
+                        class="active"
+                        id="login-tab"
+                        onclick="showLogin()">
+                        Login
+                    </button>
+
+                    <button
+                        type="button"
+                        id="register-tab"
+                        onclick="showRegister()">
+                        Register
+                    </button>
+
+                </div>
+
+                <!-- LOGIN FORM -->
+                <form class="auth-form" id="login-form">
+
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="login-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+
+                        <input
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        Login to Dashboard →
+                    </button>
+
+                </form>
+
+                <!-- REGISTER FORM -->
+                <form
+                    class="auth-form"
+                    id="register-form"
+                    style="display:none;">
+
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="register-name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            minlength="2"
+                            maxlength="120"
+                            autocomplete="name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="register-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">Create Password</label>
+
+                        <input
+                            type="password"
+                            id="register-password"
+                            name="password"
+                            placeholder="Minimum 10 characters"
+                            minlength="10"
+                            maxlength="128"
+                            autocomplete="new-password"
+                            required>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        Create Teacher Account →
+                    </button>
+
+                </form>
+
+                <div
+                    id="auth-message"
+                    class="auth-message"
+                    role="status"
+                    aria-live="polite">
+                </div>
+
+                <div class="auth-footer">
+                    By continuing, you agree to use
+                    ResultHub responsibly.
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- EDIT STUDENT POPUP (Restored properly) -->
+        <div
+            class="edit-student-modal"
+            id="editStudentModal"
+            style="display:none;"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="editStudentHeading">
+
+            <div class="edit-student-box">
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    id="closeEditModal"
+                    aria-label="Close edit student popup">
+                    ×
+                </button>
+
+                <span class="eyebrow">STUDENT MANAGEMENT</span>
+
+                <h3 id="editStudentHeading">Edit Student</h3>
+
+                <p>Update student information below[cite: 1].</p>
+
+                <form id="editStudentForm">
+
+                    <label for="editStudentName">
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editStudentName"
+                        minlength="2"
+                        maxlength="120"
+                        placeholder="Enter student name"
+                        required>
+
+                    <label for="editStudentRoll">
+                        Roll Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editStudentRoll"
+                        maxlength="50"
+                        placeholder="Enter roll number"
+                        required>
+
+                    <p
+                        id="editStudentMessage"
+                        class="form-message"
+                        role="status"
+                        aria-live="polite">
+                    </p>
+
+                    <button
+                        type="submit"
+                        class="auth-button"
+                        id="saveStudentButton">
+                        Save Changes
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+    <a href="#home" class="logo">
+        Result<span>Hub</span>
+    </a>
+
+    <p>
+        © 2026 ResultHub Pakistan. All rights reserved[cite: 1].
+    </p>
+
+</footer>
+
+<script src="app.js"></script>
+
+<!-- JavaScript & Logic Script -->
+<script>
+    // Database from localStorage or sample records
+    let allStudentResults = JSON.parse(localStorage.getItem("resultHubDatabase")) || [
+        { rollNo: "101", name: "Ahmed Ali", class: "10th Grade", term: "Annual Exam", obtained: 850, total: 1100, grade: "A+" },
+        { rollNo: "102", name: "Ayesha Khan", class: "10th Grade", term: "Monthly Test", obtained: 720, total: 1100, grade: "B" },
+        { rollNo: "103", name: "Muhammad Bilal", class: "10th Grade", term: "Weekly Assessment", obtained: 940, total: 1100, grade: "A+" },
+        { rollNo: "104", name: "Fatima Noor", class: "10th Grade", term: "Monthly Test", obtained: 410, total: 1100, grade: "C" }
+    ];
+
+    // Search Result Handler
+    document.getElementById("resultSearchForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const rollInput = document.getElementById("searchRollNumber").value.trim();
+        const resultDisplay = document.getElementById("searchResultDisplay");
+
+        const student = allStudentResults.find(s => s.rollNo.toLowerCase() === rollInput.toLowerCase());
+
+        if (student) {
+            const percentage = ((student.obtained / student.total) * 100).toFixed(2);
+            let statusClass = percentage >= 40 ? "status-pass" : "status-fail";
+            let statusText = percentage >= 40 ? "PASS" : "FAIL";
+
+            resultDisplay.innerHTML = `
+                <div class="result-card-box">
+                    <div class="result-header">Result Details (${student.term})</div>
+                    <div class="result-row"><span>Student Name:</span> <strong>${student.name}</strong></div>
+                    <div class="result-row"><span>Roll Number:</span> <strong>${student.rollNo}</strong></div>
+                    <div class="result-row"><span>Class / Program:</span> <strong>${student.class}</strong></div>
+                    <div class="result-row"><span>Evaluation Term:</span> <strong>${student.term}</strong></div>
+                    <hr class="result-divider">
+                    <div class="result-row"><span>Marks Obtained:</span> <strong>${student.obtained} / ${student.total}</strong></div>
+                    <div class="result-row"><span>Percentage:</span> <strong>${percentage}%</strong></div>
+                    <div class="result-row"><span>Grade:</span> <strong>${student.grade}</strong></div>
+                    <div class="result-row" style="margin-top: 12px; align-items: center;">
+                        <span>Status:</span> 
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </div>
+                </div>
+            `;
+        } else {
+            showCustomModal("Record Not Found", `Roll number '${rollInput}' ke liye abhi koi record mojood nahi hai. Aap niche diye gaye form se naya ya poore month/week ka record add kar sakte hain.`);
+            resultDisplay.innerHTML = "";
+        }
+    });
+
+    // Add / Update Record Handler
+    document.getElementById("addStudentRecordForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const rNo = document.getElementById("newRollNo").value.trim();
+        const sName = document.getElementById("newName").value.trim();
+        const sClass = document.getElementById("newClass").value.trim();
+        const sTerm = document.getElementById("newTerm").value.trim();
+        const obtained = parseFloat(document.getElementById("newObtained").value);
+        const total = parseFloat(document.getElementById("newTotal").value);
+        const grade = document.getElementById("newGrade").value.trim();
+        const msg = document.getElementById("addRecordMsg");
+
+        const existingIndex = allStudentResults.findIndex(s => s.rollNo.toLowerCase() === rNo.toLowerCase());
+        const newRecord = { rollNo: rNo, name: sName, class: sClass, term: sTerm, obtained: obtained, total: total, grade: grade };
+
+        if (existingIndex > -1) {
+            allStudentResults[existingIndex] = newRecord;
+            msg.style.color = "#28a745";
+            msg.innerText = `Success: Roll No ${rNo} record updated successfully!`;
+        } else {
+            allStudentResults.push(newRecord);
+            msg.style.color = "#28a745";
+            msg.innerText = `Success: New student record added successfully!`;
+        }
+
+        localStorage.setItem("resultHubDatabase", JSON.stringify(allStudentResults));
+
+        setTimeout(() => {
+            document.getElementById("addStudentRecordForm").reset();
+            msg.innerText = "";
+        }, 3000);
+    });
+
+    // Custom Modal Popup Function
+    function showCustomModal(title, message) {
+        const modalOverlay = document.createElement("div");
+        modalOverlay.className = "modal-overlay";
+        modalOverlay.innerHTML = `
+            <div class="modal-content-box">
+                <h3>${title}</h3>
+                <p>${message}</p>
+                <button class="modal-close-btn" onclick="this.closest('.modal-overlay').remove()">Okay, Got it</button>
+            </div>
+        `;
+        document.body.appendChild(modalOverlay);
+    }
+</script>
+<script src="app.js"></script>
+
+</body>
+</html>
